@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="Fillter", method = 'POST'>
+        {% csrf_token %}
+        Name: 
+        <input type="text" name = "Search">
+        <select name="LoaiKham">
+            {% for i in lk %}
+                <option value="{{i.LoaiKham_id}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit", value = "Lọc"><br>
+        {% for i in bs%}
+            Bác sĩ: {{i.Name}}; 
+            Loại Khám: {{i.LoaiKham_id.Name}};
+            Phòng: {{i.PhongKham_id.Name}};
+            <a href="FormBacSi/{{i.BacSi_id}}">Sửa</a>
+            <a href="DelBacSi/{{i.BacSi_id}}">Xóa</a>
+            </br>
+        {% endfor%}
+        <a href="addBacSiForm" class = "btn btn-primary">Thêm bác sĩ</a>
+    </form>
+</body>
+</html>         

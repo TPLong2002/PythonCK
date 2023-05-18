@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'AddBN'%}" method='POST'>
+        {% csrf_token %}
+        ID: <input type="text" name = "ID" > <br>
+        Tên: <input type="text" name = 'Name'> <br>
+        Tuổi: <input type="text" name = 'Age' > <br>
+        Giới tính: <input type="text" name = 'Gender'> <br>
+        Loại khám:  
+        <select name="LoaiKham">
+            {% for i in lk %}
+                <option value = "{{i.LoaiKham_id}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        Bác sĩ phụ trách:
+        <select name="BSPhuTrach">
+            {% for i in bs %}
+                <option value = "{{i.BacSi_id}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        Phòng khám:
+        <select name="PhongKham">
+            {% for i in pk %}
+                <option value = "{{i.PhongKham_id}}">{{i.Name}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value = "Thêm">
+    </form>
+
+</body>
+</html>

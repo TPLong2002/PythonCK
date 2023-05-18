@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="EditLoaiKham" method = "POST">
+        {% csrf_token %}
+        {% for i in lk%}
+            <input type="hidden" name="ID" value = "{{i.LoaiKham_id}}">
+            Loại Khám: <input type="text" name = "Name" value = "{{i.Name}}">;
+            <input type="submit" value = "Sửa">
+            <a href='DelLoaiKham/{{i.LoaiKham_id}}'>Xóa</a> </br>
+        {% endfor%}
+        <a href="FormLoaiKham">Thêm Loại Khám</a>
+    </form>
+</body>
+</html>

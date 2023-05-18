@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'EditBenhNhan'%}" method = 'POST'>
+        {% csrf_token %}
+        ID: <input type="text" name = "ID" value = "{{bn.BenhNhan_id}}" readonly> <br>
+        Tên: <input type="text" name = 'Name' value = "{{bn.Name}}"> <br>
+        Tuổi: <input type="text" name = 'Age' value = "{{bn.Age}}"> <br>
+        Giới tính: <input type="text" name = 'Gender' value = "{{bn.Gender}}"> <br>
+        Loại khám:  
+        <select name="LoaiKham">
+            {% for i in lk %}
+                {% if bn.LoaiKham.LoaiKham_id == i.LoaiKham_id %}
+                    <option value="{{i.LoaiKham_id}}" selected>{{i.Name}}</option>
+                {% else %}
+                    <option value = "{{i.LoaiKham_id}}">{{i.Name}}</option>
+                {%endif%}
+            {% endfor %}
+        </select>
+        Bác sĩ phụ trách:
+        <select name="BSPhuTrach">
+            {% for i in bs %}
+                {% if bn.BSPhuTrach.BacSi_id == i.BacSi_id %}
+                    <option value="{{i.BacSi_id}}" selected>{{i.Name}}</option>
+                {% else %}
+                    <option value = "{{i.BacSi_id}}">{{i.Name}}</option>
+                {%endif%}
+            {% endfor %}
+        </select>
+        Phòng khám:
+        <select name="PhongKham">
+            {% for i in pk %}
+                {% if bn.PhongKham.PhongKham_id == i.PhongKham_id %}
+                    <option value="{{i.PhongKham_id}}" selected>{{i.Name}}</option>
+                {% else %}
+                    <option value = "{{i.PhongKham_id}}">{{i.Name}}</option>
+                {%endif%}
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value = "Sửa">
+    </form>
+</body>
+</html>

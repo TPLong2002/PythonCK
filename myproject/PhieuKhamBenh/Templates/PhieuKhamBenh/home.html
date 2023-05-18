@@ -1,0 +1,181 @@
+{% extends 'PhieuKhamBenh/base.html' %}
+{% block title %}Phiếu Khám Bệnh{% endblock  %}
+{% block content1 %}
+    <h2>Thông tin bệnh nhân</h2>
+    <table>
+        <tr>
+            <td>
+                Loại Khám:
+            </td>
+            <td>
+                <select name = "LoaiKham", id = "LoaiKham">
+                    {% for i in LoaiKham%}
+                        <option value="{{ i.LoaiKham_id }}">{{i.Name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                Mã thẻ:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Mã BN:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            <td>
+                Tuổi:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            <td>
+                Giới tính:
+            </td>
+            <td>
+                <select name = "Gender", id = "Gender">
+                    
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Họ tên BN:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            <td>
+                Số Đt:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Địa chỉ:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            
+        </tr>  
+    </table>
+{% endblock  %}
+{% block content2 %}
+    <h2>Thông tin khám</h2>
+    <table>
+        <tr>
+            <td>
+                Số phiếu(id phiếu):
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            <td>
+                Ngày:
+            </td>
+            <td>
+                <input type="date">
+            </td>
+            <td>
+                Tiền khám:
+            </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Bác sĩ:
+            </td>
+            <td>
+                <select name = "BacSi", id = "BacSi">
+                    {% for i in BacSi%}
+                        {% comment %} {% if i.LoaiKham_id == LoaiKham.values%} {% endcomment %}
+                            <option value="{{ i.BacSi_id }}">{{i.Name}}</option>
+                        {% comment %} {% endif %} {% endcomment %}
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                Phòng khám:
+            </td>
+            <td>
+                <select name = "PhongKham", id = "PhongKham">
+                    {% for i in PhongKham%}
+                    <option value="{{ i.PhongKham_id }}">{{i.Name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+{% endblock  %}
+{% block content3 %}
+    <h2>Khám lam sàng</h2>
+    <table>
+        <tr>
+            <td>
+                Mạch:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+            <td>
+                Huyết áp:
+            </td>
+            <td>
+                <input type="text">
+            </td>
+            <td>
+                Nhiệt độ:
+            </td>
+            <td>
+                <input type="text">
+            </td>
+            <td>
+                Chiều cao:
+            </td>
+            <td>
+                <input type="text">
+            </td>
+            <td>
+                Cân nặng:
+            </td>
+            <td>
+                <input type="text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Chuẩn đoán:
+            </td>
+            <td>
+                <input type = "text">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ngày tái khám:
+            </td>
+            <td>
+                <input type = "date">
+            </td>
+        </tr>
+    </table>
+{% endblock  %}
+{%block content4%}
+    <input type = "submit" name = "KDT" value = "Kê đơn thuốc">
+{%endblock%}
+{% comment %} {% block content1 %}
+    <h2>Thông tin</h2>
+    {% for i in Thongtin %}
+        <li>{{i}}</li>
+    {% endfor %}
+{% endblock  %} {% endcomment %}
